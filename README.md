@@ -6,7 +6,7 @@ Course: [Create dynamic webpages using JavaScript](https://openclassrooms.com/fr
 
 - [ ] 1. Create a webpage with existing data
   - [x] Prepare your project
-  - [ ] Use JSON format
+  - [x] Use JSON format
   - [ ] Generate content using DOM
 - [ ] 2. Make your page interactive
   - [ ] Manipulate lists in JavaScript
@@ -24,6 +24,24 @@ Course: [Create dynamic webpages using JavaScript](https://openclassrooms.com/fr
 - [ ] 5. Linter
 
 ## 1. Create a webpage with existing data
+
+```json
+[
+    {
+        "category_name1": "text_value with inner \" quotes",
+        "category_name2": 0,
+        "category_name3": true,
+        "category_name4": [
+            "text_value",
+            0,
+            true
+        ],
+    },
+    {
+        "...": "..."
+    }
+]
+```
 
 ## 2. Make your page interactive
 
