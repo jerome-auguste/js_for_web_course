@@ -73,3 +73,43 @@ boutonFiltrerDesc.addEventListener("click", function () {
     });
     console.log(piecesFiltrees);
 });
+
+const nomsAbordables = pieces.map(piece => piece.nom);
+for(let i = pieces.length -1 ; i >= 0; i--){
+    if(pieces[i].prix > 35){
+        nomsAbordables.splice(i,1);
+    }
+}
+
+//Création de la liste
+const abordablesElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < nomsAbordables.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = nomsAbordables[i];
+    abordablesElements.appendChild(nomElement)
+}
+// Ajout de l'en-tête puis de la liste au bloc résultats filtres
+document.querySelector('.abordables')
+    .appendChild(abordablesElements)
+
+const nomsDispo = pieces.map(piece => piece.nom);
+const prixDispo = pieces.map(piece => piece.prix);
+for (let i=pieces.length -1; i>=0; i--){
+    if(pieces[i].disponibilite === false){
+        nomsDispo.splice(i,1);
+        prixDispo.splice(i,1);
+    };
+};
+
+//Création de la liste
+const dispoElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < nomsDispo.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = `${nomsDispo[i]} - ${prixDispo[i]} €`;
+    dispoElements.appendChild(nomElement)
+}
+// Ajout de l'en-tête puis de la liste au bloc résultats filtres
+document.querySelector('.disponibles')
+    .appendChild(dispoElements)
