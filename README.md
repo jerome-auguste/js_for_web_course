@@ -4,12 +4,12 @@ Course: [Create dynamic webpages using JavaScript](https://openclassrooms.com/fr
 
 ## Structure of the course
 
-- [ ] 1. Create a webpage with existing data
+- [x] 1. Create a webpage with existing data
   - [x] Prepare your project
   - [x] Use JSON format
   - [x] Generate content using DOM
 - [ ] 2. Make your page interactive
-  - [ ] Manipulate lists in JavaScript
+  - [x] Manipulate lists in JavaScript
   - [ ] Use the map function
   - [ ] Update the displayed webpage
 - [ ] 3. Interact with a web service using API
@@ -69,6 +69,45 @@ sectionFiches.appendChild(categorieElement);
 ```
 
 ## 2. Make your page interactive
+
+```javascript
+for (let i = 0; i < pieces.length; i++) {
+
+// Récupération de l'élément du DOM qui accueillera les fiches
+const sectionFiches = document.querySelector(".fiches");
+// Création d’une balise dédiée à une pièce automobile
+const pieceElement = document.createElement("article");
+// On crée l’élément img.
+const imageElement = document.createElement("img");
+// On accède à l’indice i de la liste pieces pour configurer la source de l’image.
+imageElement.src = pieces[i].image;
+// Idem pour le nom, le prix et la catégorie...
+
+// On rattache la balise article à la section Fiches
+sectionFiches.appendChild(pieceElement);
+// On rattache l’image à pieceElement (la balise article)
+pieceElement.appendChild(imageElement);
+// Idem pour le nom, le prix et la catégorie...
+}
+
+const boutonTrier = document.querySelector(".btn-trier");
+boutonTrier.addEventListener("click", function () {
+    const piecesOrdonnees = Array.from(pieces); // copie de la liste, sort est une méthode "in place"
+    piecesOrdonnees.sort(function (a, b) {
+        return a.prix - b.prix;
+        // trié par prix: négatif => a avant b, positif => b avant a, 0 => pas de changement
+    });
+    console.log(pieces);
+});
+
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+boutonFiltrer.addEventListener("click", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= 35;
+    });
+});
+
+```
 
 ## 3. Interact with a web service using API
 
