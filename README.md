@@ -65,9 +65,6 @@ sectionFiches.appendChild(prixElement);
 sectionFiches.appendChild(categorieElement);
 ```
 
-```javascript
-```
-
 ## 2. Make your page interactive
 
 ```javascript
@@ -106,6 +103,26 @@ boutonFiltrer.addEventListener("click", function () {
         return piece.prix <= 35;
     });
 });
+
+const noms = pieces.map(piece => piece.nom); // map retourne une nouvelle liste en appliquant la fonction lambda à tous les éléments de la liste initiale
+for(let i = pieces.length -1 ; i >= 0; i--){ // Il faut parcourir la liste à l'envers pour accéder à tous les éléments
+   if(pieces[i].prix > 35){
+       noms.splice(i,1) // splice supprime 1 élément à l'indice i
+   }
+}
+console.log(noms)
+
+//Création de la liste
+const abordablesElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < noms.length ; i++){
+   const nomElement = document.createElement('li');
+   nomElement.innerText = noms[i];
+   abordablesElements.appendChild(nomElement)
+}
+// Ajout de l'en-tête puis de la liste au bloc résultats filtres
+document.querySelector('.abordables')
+   .appendChild(abordablesElements)
 
 ```
 
