@@ -92,7 +92,7 @@ pieceElement.appendChild(imageElement);
 
 const boutonTrier = document.querySelector(".btn-trier");
 boutonTrier.addEventListener("click", function () {
-    const piecesOrdonnees = Array.from(pieces); // copie de la liste
+    const piecesOrdonnees = Array.from(pieces); // copie de la liste, sort est une méthode "in place"
     piecesOrdonnees.sort(function (a, b) {
         return a.prix - b.prix;
         // trié par prix: négatif => a avant b, positif => b avant a, 0 => pas de changement
@@ -102,8 +102,7 @@ boutonTrier.addEventListener("click", function () {
 
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 boutonFiltrer.addEventListener("click", function () {
-    const piecesFiltrees = Array.from(pieces);
-    piecesFitrees.filter(function (piece) {
+    const piecesFiltrees = pieces.filter(function (piece) {
         return piece.prix <= 35;
     });
 });
